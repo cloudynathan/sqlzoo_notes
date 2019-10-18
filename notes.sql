@@ -2,7 +2,7 @@
    # SQL ZOO NOTES #
    ################# */
 
-/* 0 SELECT basics */
+/*---------- 0 SELECT basics */
 
 --IN checks if an item is in a list.
 SELECT name, population --2. Show the name and the population for 'Sweden', 'Norway' and 'Denmark'.
@@ -14,7 +14,7 @@ SELECT name, area --3. Countries with an area between 200,000 and 250,000.
 FROM world
 WHERE area BETWEEN 200000 AND 250000
 
-/* 1 SELECT names */
+/*---------- 1 SELECT names */
 --LIKE
 SELECT name --1. Find the country that start with Y
 FROM world
@@ -51,5 +51,5 @@ WHERE capital LIKE concat('%', name, '%') AND capital > name
 FROM world
 WHERE capital LIKE concat('%', name, '%') AND capital > name
 
-
+/*---------- 2. SELECT nobel */
 
