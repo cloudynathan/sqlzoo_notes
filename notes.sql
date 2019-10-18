@@ -1,6 +1,6 @@
-#################
-# SQL ZOO NOTES #
-#################
+/*
+SQL ZOO NOTES
+/*
 
 /* 0 SELECT basics */
 
