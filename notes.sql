@@ -2,7 +2,7 @@
 # SQL ZOO NOTES #
 #################
 
---0 SELECT basics
+/* 0 SELECT basics */
 
 --IN checks if an item is in a list.
 --Show the name and the population for 'Sweden', 'Norway' and 'Denmark'.
