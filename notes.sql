@@ -47,7 +47,7 @@ WHERE capital LIKE concat('%', name, '%') AND capital > name;
 --REPLACE()
 --15. For Monaco-Ville the name is Monaco and the extension is -Ville.
 --Show the name and the extension where the capital is an extension of name of the country.
---SELECT name, REPLACE(capital, name, '')
+SELECT name, REPLACE(capital, name, '')
 FROM world
 WHERE capital LIKE concat('%', name, '%') AND capital > name;
 
