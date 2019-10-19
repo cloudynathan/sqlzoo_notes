@@ -30,7 +30,7 @@ ORDER BY name;
 --Find the country where the capital is the country plus "City".
 SELECT name
 FROM world
-WHERE capital = concat(name, ' City');
+WHERE capital LIKE concat(name, ' City');
 
 --13. Find the capital and the name where the capital includes the name of the country.
 SELECT capital, name
