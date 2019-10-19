@@ -111,12 +111,12 @@ WHERE (LEFT(name,1)=LEFT(capital,1)) AND (name <> capital);
 --The query shown misses countries like Bahamas and Belarus because they contain at least one 'a'
 SELECT name
 FROM world
-WHERE (name LIKE '%a%' AND 
+WHERE name LIKE '%a%' AND 
 name LIKE '%e%' AND
 name LIKE '%i%' AND
 name LIKE '%o%' AND
-name LIKE '%u%') AND
-(name NOT LIKE '% %');
+name LIKE '%u%' AND
+name NOT LIKE '% %';
 
 /*---------- 3. SELECT nobel */
 
