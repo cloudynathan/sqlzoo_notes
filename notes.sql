@@ -159,6 +159,11 @@ SELECT name, CONCAT(ROUND(population/(SELECT population FROM world WHERE name = 
 FROM world
 WHERE continent = 'Europe';
                                                                
+--7. Find the largest country (by area) in each continent, show the continent, the name and the area:
+SELECT continent, name, area
+FROM world
+WHERE area IN (SELECT MAX(area) FROM world GROUP BY continent);
+
 
 
 
