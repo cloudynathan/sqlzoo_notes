@@ -164,7 +164,12 @@ SELECT continent, name, area
 FROM world
 WHERE area IN (SELECT MAX(area) FROM world GROUP BY continent);
 
-
+--8. List each continent and the name of the country that comes first alphabetically.
+SELECT continent, MIN(name) as name
+FROM world
+GROUP BY continent
+ORDER BY continent;
+                                                               
 
 
 
