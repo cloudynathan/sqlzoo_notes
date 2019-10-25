@@ -197,7 +197,7 @@ SELECT name, continent
 FROM world x
 WHERE population > ALL(SELECT population*3 FROM world y WHERE x.continent = y.continent AND population > 0 AND y.name != x.name)
 
-
+/*---------- 5. SUM and COUNT */
 
 
 
