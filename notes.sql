@@ -219,6 +219,16 @@ GROUP BY continent
 HAVING SUM(population) >= 100000000;
 
 /*---------- 5. JOIN */
+--3. Show the player, teamid, stadium and mdate for every German goal.
+SELECT player, teamid, stadium, mdate
+FROM goal JOIN game ON (goal.matchid=game.id)
+WHERE teamid='GER';
+
+--6. List the the dates of the matches and the name of the team in which 'Fernando Santos' was the team1 coach.
+SELECT mdate, teamname
+FROM game JOIN eteam ON (game.team1 = eteam.id)
+WHERE coach = 'Fernando Santos'
+
 
 
 
