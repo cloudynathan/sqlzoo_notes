@@ -229,7 +229,11 @@ SELECT mdate, teamname
 FROM game JOIN eteam ON (game.team1 = eteam.id)
 WHERE coach = 'Fernando Santos';
 
-
+--8. Show the name of all players who scored a goal against Germany.
+SELECT DISTINCT(player)
+FROM game JOIN goal ON (goal.matchid = game.id)
+WHERE (team1 = 'GER' OR team2 = 'GER')
+AND teamid <> 'GER';
 
 
 
