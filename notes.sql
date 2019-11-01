@@ -235,5 +235,16 @@ FROM game JOIN goal ON (goal.matchid = game.id)
 WHERE (team1 = 'GER' OR team2 = 'GER')
 AND teamid <> 'GER';
 
+--9. Show teamname and the total number of goals scored (in descending order).
+SELECT teamname, COUNT(teamid) AS 'total_goals'
+FROM eteam JOIN goal ON eteam.id=goal.teamid
+GROUP BY teamname
+ORDER BY total_goals DESC;
+
+--10. Show the stadium and the number of goals scored in each stadium.
+SELECT stadium, COUNT(player) as goals_scored
+FROM game JOIN goal ON game.id=goal.matchid
+GROUP BY stadium;
+
 
 
