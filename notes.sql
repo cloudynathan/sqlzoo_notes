@@ -218,7 +218,7 @@ FROM world
 GROUP BY continent
 HAVING SUM(population) >= 100000000;
 
-/*---------- 5. JOIN */
+/*---------- 6. JOIN */
 --3. Show the player, teamid, stadium and mdate for every German goal.
 SELECT player, teamid, stadium, mdate
 FROM goal JOIN game ON (goal.matchid=game.id)
@@ -270,6 +270,14 @@ FROM game LEFT JOIN goal ON (id=matchid)
 GROUP BY mdate,team1,team2
 ORDER BY mdate,matchid,team1,team2;
 
+/*---------- 7. More JOIN operations*/
+
+-- 11. Which were the busiest years for 'Rock Hudson', show the year and the number of movies he made each year for any year in which he made more than 2 movies.
+SELECT yr, COUNT(title)
+FROM movie JOIN casting ON movie.id=casting.movieid JOIN actor ON casting.actorid=actor.id 
+WHERE name LIKE 'Rock Hudson' 
+GROUP BY yr 
+HAVING COUNT(title) > 2;
 
 
 
