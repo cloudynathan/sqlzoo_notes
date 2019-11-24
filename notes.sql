@@ -333,3 +333,7 @@ SELECT name, population , CASE WHEN population<1000000 THEN 'small'
                                ELSE 'large' END
 FROM bbc
 
+/*---------- 8+ Numeric Examples */
+
+
+
