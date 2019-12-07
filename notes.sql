@@ -337,12 +337,9 @@ FROM bbc;
 
 /*---------- 9. Window functions */
 -- RANK() 
--- You can use the RANK function to see the order of the candidates. 
--- If you RANK using (ORDER BY votes DESC) then the candidate with the most votes has rank 1.
-SELECT party, RANK() OVER (ORDER BY votes DESC) as position  
-FROM ge 
-GROUP BY party 
-ORDER BY position DESC; 
+SELECT product_id, product_name, list_price, RANK () OVER (ORDER BY list_price DESC) AS 'price_rank'  
+FROM production.products;
+
 
 
 
