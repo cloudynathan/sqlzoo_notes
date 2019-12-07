@@ -7,7 +7,7 @@
 --IN checks if an item is in a list.
 SELECT name, population --2. Show the name and the population for 'Sweden', 'Norway' and 'Denmark'.
 FROM world
-WHERE name IN ('Sweden', 'Norway', 'Denmark') ;
+WHERE name IN ('Sweden', 'Norway', 'Denmark');
 
 --BETWEEN allows range checking (range specified is inclusive of boundary values)
 SELECT name, area --3. Countries with an area between 200,000 and 250,000.
@@ -195,7 +195,7 @@ WHERE continent NOT IN (SELECT continent FROM world WHERE population >= 25000000
 --Give the countries and continents.
 SELECT name, continent
 FROM world x
-WHERE population > ALL(SELECT population*3 FROM world y WHERE x.continent = y.continent AND population > 0 AND y.name != x.name)
+WHERE population > ALL(SELECT population*3 FROM world y WHERE x.continent = y.continent AND population > 0 AND y.name != x.name);
 
 /*---------- 5. SUM and COUNT */
 --SUM, COUNT, MAX, DISTINCT, ORDER  BY
@@ -331,9 +331,20 @@ WHERE name LIKE 'C%';
 SELECT name, population , CASE WHEN population<1000000 THEN 'small'
                                WHEN population<10000000 THEN 'medium'
                                ELSE 'large' END
-FROM bbc
+FROM bbc;
 
 /*---------- 8+ Numeric Examples */
+
+/*---------- 9. Window functions */
+-- RANK() 
+-- You can use the RANK function to see the order of the candidates. 
+-- If you RANK using (ORDER BY votes DESC) then the candidate with the most votes has rank 1.
+SELECT party, RANK() OVER (ORDER BY votes DESC) as position  
+FROM ge 
+GROUP BY party 
+ORDER BY position DESC; 
+
+
 
 
 
