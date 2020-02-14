@@ -340,11 +340,16 @@ FROM bbc;
 SELECT product_id, product_name, list_price, RANK () OVER (ORDER BY list_price DESC) AS 'price_rank'  
 FROM production.products;
 
-
 SELECT party, votes, RANK() OVER (ORDER BY votes DESC) as 'posn' 
 FROM ge 
 WHERE constituency = 'S14000024' AND yr = 2017 
 ORDER BY party;
 
+-- PARTITION BY 
+SELECT yr, party, votes, RANK() OVER (PARTITION BY yr ORDER BY votes DESC) as 'posn' 
+FROM ge 
+WHERE constituency = 'S14000021' 
+ORDER BY party, yr;
+                                                                 
 
 
