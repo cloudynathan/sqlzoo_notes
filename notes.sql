@@ -350,6 +350,14 @@ SELECT yr, party, votes, RANK() OVER (PARTITION BY yr ORDER BY votes DESC) as 'p
 FROM ge 
 WHERE constituency = 'S14000021' 
 ORDER BY party, yr;
+
+SELECT constituency, party, votes, RANK() OVER (PARTITION BY constituency ORDER BY votes DESC) as 'posn' 
+FROM ge 
+WHERE constituency BETWEEN 'S14000021' AND 'S14000026' AND yr = 2017 
+ORDER BY posn, constituency, votes DESC;
+
+                                                                 
+                                                                 
                                                                  
 
 
