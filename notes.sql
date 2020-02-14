@@ -341,7 +341,10 @@ SELECT product_id, product_name, list_price, RANK () OVER (ORDER BY list_price D
 FROM production.products;
 
 
-
+SELECT party, votes, RANK() OVER (ORDER BY votes DESC) as 'posn' 
+FROM ge 
+WHERE constituency = 'S14000024' AND yr = 2017 
+ORDER BY party;
 
 
 
