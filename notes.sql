@@ -396,20 +396,12 @@ JOIN route AS b ON (a.company, a.num) = (b.company, b.num)
 WHERE a.stop = 115 AND b.stop = 137;
 
 -- # 8. Give a list of the services which connect the stops 'Craiglockhart' and 'Tollcross'
-SELECT r1.company, r1.num, s1.name, s2.name
+SELECT r1.company, r1.num 
 FROM route AS r1
 JOIN route AS r2 ON (r1.company, r1.num) = (r2.company, r2.num)
 JOIN stops AS s1 ON r1.stop = s1.id
 JOIN stops AS s2 ON r2.stop = s2.id
 WHERE s1.name = 'Craiglockhart' AND s2.name = 'Tollcross';
-
--- # 9. Distinct list of stop reached from Craiglockhart by taking one bus, including Craiglockhart, offered by LRT company
-SELECT r1.company, r1.num, s1.name, s2.name
-FROM route AS r1
-JOIN route AS r2 ON (r1.company, r1.num) = (r2.company, r2.num)
-JOIN stops AS s1 ON r1.stop = s1.id
-JOIN stops AS s2 ON r2.stop = s2.id
-WHERE s1.name = 'Craiglockhart';
 
 
 
