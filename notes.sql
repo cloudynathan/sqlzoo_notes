@@ -373,7 +373,57 @@ FROM (SELECT constituency,party, votes, RANK() OVER (PARTITION BY constituency O
 WHERE posn = 1 
 GROUP BY party;
                                                                  
+
+/*---------- 9. Self join */                                                                 
+5. Self join: Show services from Craiglockhart to London Route
+SELECT a.company, a.num, a.stop, b.stop
+FROM route a JOIN route b ON
+  (a.company=b.company AND a.num=b.num)
+WHERE a.stop = 53 AND b.stop = 149;
                                                                  
-                                                                 
+6. Self join: Show services from Craiglockhart to London Route, refer to them by name                                                                  
+SELECT a.company, a.num, stopa.name, stopb.name
+FROM route a JOIN route b ON
+  (a.company=b.company AND a.num=b.num)
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+WHERE stopa.name='Craiglockhart' AND stopb.name = 'London Road';
+
+7. Give a list of all the services which connect stops 115 and 137 ('Haymarket' and 'Leith')
+SELECT DISTINCT a.company, b.num
+FROM route AS a
+JOIN route AS b
+ON (a.company, a.num) = (b.company, b.num)
+WHERE a.stop = 115
+AND b.stop = 137;
+
+-- # 8. Give a list of the services which connect the stops 'Craiglockhart' and 'Tollcross'
+SELECT r1.company, r1.num, s1.name, s2.name
+FROM route AS r1
+JOIN route AS r2
+ON (r1.company, r1.num) = (r2.company, r2.num)
+JOIN stops AS s1
+ON r1.stop = s1.id
+JOIN stops AS s2
+ON r2.stop = s2.id
+WHERE s1.name = 'Craiglockhart'
+AND s2.name = 'Tollcross';
+
+-- # 9. Distinct list of stop reached from Craiglockhart by taking one bus, including Craiglockhart, offered by LRT company
+SELECT r1.company, r1.num, s1.name, s2.name
+FROM route AS r1
+JOIN route AS r2
+ON (r1.company, r1.num) = (r2.company, r2.num)
+JOIN stops AS s1
+ON r1.stop = s1.id
+JOIN stops AS s2
+ON r2.stop = s2.id
+WHERE s1.name = 'Craiglockhart';
+
+
+
+
+
+
 
 
