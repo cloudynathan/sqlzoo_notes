@@ -395,7 +395,7 @@ FROM route AS a
 JOIN route AS b ON (a.company, a.num) = (b.company, b.num)
 WHERE a.stop = 115 AND b.stop = 137;
 
--- # 8. Give a list of the services which connect the stops 'Craiglockhart' and 'Tollcross'
+-- 8. Give a list of the services which connect the stops 'Craiglockhart' and 'Tollcross'
 SELECT r1.company, r1.num 
 FROM route AS r1
 JOIN route AS r2 ON (r1.company, r1.num) = (r2.company, r2.num)
@@ -403,8 +403,15 @@ JOIN stops AS s1 ON r1.stop = s1.id
 JOIN stops AS s2 ON r2.stop = s2.id
 WHERE s1.name = 'Craiglockhart' AND s2.name = 'Tollcross';
 
-
-
+-- https://sqlzoo.net/wiki/Guest_House_Assessment_Medium
+-- 8. Edinburgh Residents. For every guest who has the word “Edinburgh” in their address show the total number of nights booked.
+-- Be sure to include 0 for those guests who have never had a booking. Show last name, first name, address and number of nights. 
+-- Order by last name then first name.
+SELECT last_name, first_name, address, CASE WHEN SUM(booking.nights) IS NULL THEN 0 ELSE SUM(booking.nights) END AS nights 
+FROM booking RIGHT JOIN guest ON (booking.guest_id=guest.id) 
+WHERE address LIKE '%Edinburgh%' 
+GROUP BY last_name, first_name, address 
+ORDER BY last_name, first_name;
 
 
 
