@@ -1,0 +1,16 @@
+-- sqlzoo musicians 
+
+--EASY:
+
+--1. Give the organiser's name of the concert in the Assembly Rooms after the first of Feb, 1997.
+SELECT concert_orgniser, con_date 
+FROM concert 
+WHERE concert_venue LIKE '%Assembly Rooms%' AND con_date >= '03/01/97';
+
+--2.Find all the performers who played guitar or violin and were born in England.
+SELECT m_name, instrument  
+FROM musician m, place p, performer pe 
+WHERE m.born_in=p.place_no AND m.m_no=pe.perf_is 
+AND instrument IN ('guitar', 'violin') AND place_country='England';
+
+--3. List the names of musicians who have conducted concerts in USA together with the towns and dates of these concerts.
